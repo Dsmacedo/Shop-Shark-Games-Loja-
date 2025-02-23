@@ -1,6 +1,10 @@
-import Button from '../Button'
+import { useDispatch, useSelector } from 'react-redux'
 
-import starWars from '../../assets/images/star_wars.png'
+import Button from '../Button'
+import Tag from '../Tag'
+
+import { RootReducer } from '../../store'
+import { close, remove } from '../../store/reducer/cart'
 
 import {
   Overlay,
@@ -10,11 +14,7 @@ import {
   Quantity,
   CartItem
 } from './styles'
-import Tag from '../Tag'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
-import { close, remove } from '../../store/reducer/cart'
-import { formataPreco } from '../ProductList'
+import { parseToBrl } from '../../utils'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -47,7 +47,7 @@ const Cart = () => {
                 <h3>{item.name}</h3>
                 <Tag>{item.details.category}</Tag>
                 <Tag>{item.details.system}</Tag>
-                <span>{formataPreco(item.prices.current)}</span>
+                <span>{parseToBrl(item.prices.current)}</span>
               </div>
               <button onClick={() => removeItem(item.id)} type="button" />
             </CartItem>
@@ -55,7 +55,7 @@ const Cart = () => {
         </ul>
         <Quantity>{items.length} jogos no carrinho</Quantity>
         <Prices>
-          Total de {formataPreco(getTotalprice())}{' '}
+          Total de {parseToBrl(getTotalprice())}{' '}
           <span>Em até 6x sem juros</span>
         </Prices>
         <Button
