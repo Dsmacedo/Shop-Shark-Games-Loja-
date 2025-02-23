@@ -3,7 +3,7 @@ import Button from '../Button'
 
 import { useGetFeaturedGameQuery } from '../../services/api'
 
-import { Imagem, Titulo, Precos } from './styles'
+import * as S from './styles'
 import { parseToBrl } from '../../utils'
 
 const Banner = () => {
@@ -13,15 +13,15 @@ const Banner = () => {
     return <h3>carregando...</h3>
   }
   return (
-    <Imagem style={{ backgroundImage: `url(${game.media.cover})` }}>
+    <S.Image style={{ backgroundImage: `url(${game.media.cover})` }}>
       <div className="container">
         <Tag size="big">Destaque do dia</Tag>
         <div>
-          <Titulo>{game.name}</Titulo>
-          <Precos>
+          <S.Title>{game.name}</S.Title>
+          <S.Prices>
             De <span>{parseToBrl(game.prices.old)}</span> <br />
             por apenas {parseToBrl(game.prices.current)}
-          </Precos>
+          </S.Prices>
         </div>
         <Button
           type="link"
@@ -32,7 +32,7 @@ const Banner = () => {
           Aproveitar
         </Button>
       </div>
-    </Imagem>
+    </S.Image>
   )
 }
 

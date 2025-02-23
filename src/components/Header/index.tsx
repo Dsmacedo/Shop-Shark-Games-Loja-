@@ -39,7 +39,7 @@ const Header = () => {
             <span />
           </Hamburguer>
           <Link to="/">
-            <Logo src={shark} alt="logo EPLAY" />
+            <Logo src={shark} alt="logo Shark" />
           </Link>
           <nav>
             <Links>
