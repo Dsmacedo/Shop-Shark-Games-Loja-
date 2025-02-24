@@ -1,4 +1,4 @@
-LINK: https://shop-shark-games-loja.vercel.app/
+LINK DO PROJETO: https://shop-shark-games-loja-9i2g.vercel.app/
 
 # Getting Started with Create React App
 
